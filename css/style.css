@@ -1,0 +1,25 @@
+body {
+    background-color: #000000;
+    color: #ff0000;
+    font-family: monospace;
+    margin: 0;
+    padding: 10px;
+}
+
+.input-line, .history-item {
+    display: flex;
+    align-items: center;
+}
+
+#terminalInput, .history-item {
+    background-color: #000000;
+    color: #ff0000;
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    font-family: monospace;
+}
+
+.prompt, .history-item {
+    white-space: pre-wrap;
+}
