@@ -66,16 +66,14 @@ body {
 
 .output-line {
     color: #ffffff;
-    margin-left: 0;
-    margin-bottom: 10px;
     white-space: pre-wrap;
     font-family: monospace;
-    margin: 0;
+    margin: 0 0 10px 0;
     padding: 0;
 }
 
 .error-line {
     color: #ff6666;
-    margin-left: 0;
-    margin-bottom: 10px;
+    margin: 0 0 10px 0;
+    padding: 0;
 }

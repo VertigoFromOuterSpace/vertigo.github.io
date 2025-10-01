@@ -7,20 +7,17 @@ const filesystem = {
 const fileContents = {
     '/projetos/projetos.txt': `=== MEUS PROJETOS ===
 
-1. Terminal Portfolio
-   - Portfólio interativo em formato de terminal
-   - Tecnologias: JavaScript, HTML/CSS
-   - Status: Em desenvolvimento
+1. Dark Souls Buddy
+   - Pequeno companheiro no canto da tela, que te dá dicas de vez em quando.
+   - Feito em Python e com pastas e arquivos organizados pra facilitar customização.
+   - Vou refazer em Rust mas futuramente.
 
-2. [Adicione seus projetos aqui]
-   - Descrição do projeto
-   - Tecnologias utilizadas
-   - Status
+2. LLM-Playground
+   - Site para testar suas habilidades em enganar uma inteligência artificial.
+   - Utiliza por padrão a API do Gemini flash. mas pode ser alterado para qualquer outro modelo.
+   - Ainda irei consertar a contagem de pontos e verificações.
 
-3. [Outro projeto]
-   - Descrição
-   - Tecnologias
-   - Status
+3. Ainda vou adicionar o resto, calma lá
 
 === FIM ===`
 };
