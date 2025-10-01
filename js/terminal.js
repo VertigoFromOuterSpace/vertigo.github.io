@@ -1,3 +1,9 @@
+// Arte ASCII para exibir antes do terminal
+const beforeTerminalArt = `░█░█░█▀▀░█▀▄░▀█▀░▀█▀░█▀▀░█▀█░█▀▀░█▀█░█▀▀
+░▀▄▀░█▀▀░█▀▄░░█░░░█░░█░█░█░█░█▀▀░█░█░▀▀█
+░░▀░░▀▀▀░▀░▀░░▀░░▀▀▀░▀▀▀░▀▀▀░▀░░░▀▀▀░▀▀▀
+`;
+
 // Sistema de arquivos virtual
 const filesystem = {
     '/': ['projetos'],
@@ -228,3 +234,17 @@ terminalInput.addEventListener('keydown', function(event) {
 
 // Inicializa
 updatePrompt();
+
+// Exibe arte ASCII antes do terminal
+function displayWelcomeArt() {
+    const artElement = document.createElement('pre');
+    artElement.textContent = beforeTerminalArt;
+    artElement.style.color = '#ff0000';
+    artElement.style.margin = '0 0 20px 0';
+    artElement.style.padding = '0';
+    artElement.style.fontFamily = 'monospace';
+    outputTerminal.appendChild(artElement);
+}
+
+// Exibe a arte ao carregar a página
+displayWelcomeArt();

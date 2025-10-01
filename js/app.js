@@ -9,7 +9,7 @@ TerminalInput.addEventListener('keydown', function(event) {
         const historyLine = document.createElement('div');
         historyLine.innerHTML = `<span class="prompt">
         ┌──(vfos㉿vfos)-[~]
-        └─$</span> ${command}`;
+        └─$ </span> ${command}`;
         historyLine.classList.add('history-item');
         
         containerTerminal.insertBefore(historyLine, inputLine);
