@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Please Yourself Now</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="containerTerminal">
+        <div class="outputTerminal"></div>
+
+        <div class="input-line">
+            <div class="prompt-container">
+                <div class="prompt-line1">┌──(vfos㉿vfos)-[<span id="currentDir">~</span>]</div>
+                <div class="prompt-line2">└─$ <input type="text" id="terminalInput" autofocus /></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const containerTerminal = document.querySelector('.containerTerminal');
+        const terminalInput = document.getElementById('terminalInput');
+        const inputLine = document.querySelector('.input-line');
+        const outputTerminal = document.querySelector('.outputTerminal');
+        const currentDirSpan = document.getElementById('currentDir');
+        
+        let currentDir = '/';
+
+        function updatePrompt() {
+            const displayDir = currentDir === '/' ? '~' : currentDir;
+            currentDirSpan.textContent = displayDir;
+        }
+
+        terminalInput.addEventListener('keydown', async function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                const command = terminalInput.value;
+                
+                // Adiciona o comando ao histórico
+                const historyLine = document.createElement('div');
+                const displayDir = currentDir === '/' ? '~' : currentDir;
+                historyLine.innerHTML = `<div class="history-prompt">┌──(vfos㉿vfos)-[${displayDir}]</div><div class="history-command">└─$ ${command}</div>`;
+                historyLine.classList.add('history-item');
+                outputTerminal.appendChild(historyLine);
+
+                // Processa o comando via backend Rust
+                if (command.trim() !== '') {
+                    if (command.trim() === 'clear') {
+                        outputTerminal.innerHTML = '';
+                    } else {
+                        try {
+                            const response = await fetch('/api/command', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({ 
+                                    command: command,
+                                    current_dir: currentDir
+                                })
+                            });
+
+                            const data = await response.json();
+                            
+                            // Atualiza o diretório se mudou
+                            if (data.new_dir) {
+                                currentDir = data.new_dir;
+                                updatePrompt();
+                            }
+                            
+                            if (data.output && data.output !== 'CLEAR_TERMINAL') {
+                                const resultLine = document.createElement('div');
+                                resultLine.textContent = data.output;
+                                resultLine.classList.add('output-line');
+                                outputTerminal.appendChild(resultLine);
+                            } else if (data.output === 'CLEAR_TERMINAL') {
+                                outputTerminal.innerHTML = '';
+                            }
+                        } catch (error) {
+                            const errorLine = document.createElement('div');
+                            errorLine.textContent = 'Erro ao processar comando: ' + error.message;
+                            errorLine.classList.add('error-line');
+                            outputTerminal.appendChild(errorLine);
+                        }
+                    }
+                }
+
+                terminalInput.value = '';
+                containerTerminal.scrollTop = containerTerminal.scrollHeight;
+            }
+        });
+    </script>
+</body>
+</html>

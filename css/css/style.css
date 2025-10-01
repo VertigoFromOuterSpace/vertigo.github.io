@@ -1,0 +1,78 @@
+body {
+    background-color: #000000;
+    color: #ff0000;
+    font-family: monospace;
+    margin: 0;
+    padding: 10px;
+}
+
+.containerTerminal {
+    min-height: 100vh;
+}
+
+.outputTerminal {
+    margin-bottom: 10px;
+}
+
+.input-line {
+    display: block;
+}
+
+.prompt-container {
+    display: block;
+}
+
+.prompt-line1 {
+    color: #ff0000;
+    margin: 0;
+    padding: 0;
+}
+
+.prompt-line2 {
+    color: #ff0000;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.history-item {
+    margin-bottom: 10px;
+    color: #ff0000;
+}
+
+.history-prompt {
+    color: #ff0000;
+    margin: 0;
+    padding: 0;
+}
+
+.history-command {
+    color: #ff0000;
+    margin: 0;
+    padding: 0;
+}
+
+#terminalInput {
+    background-color: #000000;
+    color: #ff0000;
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    font-family: monospace;
+    margin: 0;
+    padding: 0;
+}
+
+.output-line {
+    color: #00ff00;
+    margin-left: 0;
+    margin-bottom: 10px;
+    white-space: pre-wrap;
+}
+
+.error-line {
+    color: #ff6666;
+    margin-left: 0;
+    margin-bottom: 10px;
+}

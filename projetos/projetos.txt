@@ -1,0 +1,18 @@
+=== MEUS PROJETOS ===
+
+1. Terminal Portfolio
+   - Portfólio interativo em formato de terminal
+   - Tecnologias: Rust, Actix-web, HTML/CSS
+   - Status: Em desenvolvimento
+
+2. [Adicione seus projetos aqui]
+   - Descrição do projeto
+   - Tecnologias utilizadas
+   - Status
+
+3. [Outro projeto]
+   - Descrição
+   - Tecnologias
+   - Status
+
+=== FIM ===
