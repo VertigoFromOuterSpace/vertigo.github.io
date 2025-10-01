@@ -217,7 +217,7 @@ terminalInput.addEventListener('keydown', function(event) {
             if (result.output === 'CLEAR_TERMINAL') {
                 outputTerminal.innerHTML = '';
             } else if (result.output) {
-                const resultLine = document.createElement('div');
+                const resultLine = document.createElement('pre');
                 resultLine.textContent = result.output;
                 resultLine.classList.add('output-line');
                 outputTerminal.appendChild(resultLine);
